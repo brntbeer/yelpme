@@ -1,12 +1,19 @@
 require "yelpme/version"
 
-# Usecase 1:
-# $ yelpme dinner "San Francisco"
-# => Yelp::Search.new
-#    => term = ARGV[0]
-#    => location = ARGV[1]
-# No flags yet, return first location from the search
 
 module Yelpme
-  # Your code goes here...
+  
+  # A quick search to get the first result
+  #
+  # args - the list of arguments you may pass in to search on yelp
+  #
+  # Examples
+  #
+  #   search("breakfast", "san francisco")
+  #   # => 'Plow'
+  #
+  # Returns the first result based on the arguments.
+  def search(*args)
+  end
+
 end
