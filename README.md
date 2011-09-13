@@ -1,12 +1,5 @@
 #Yelpme so I don't have to.
 
-##WHOOPS
-So this gem is a work in progress, clearly. That being said, the maintainer of the yelp2 gem has not
-released to rubygems.org and so my require statement is basically going to fail for you.
-
-So if you're really anxious and dont want to wait for him, clone the yelp2 repo and run `rake install` and
-You'll be good to go.
-
 ##What
 Yelpme uses the [yelp2](https://github.com/rdeshpande/yelp2) Ruby wrapper by [rdeshpande](https://github.com/rdeshpande)
 to be used on the command line.
