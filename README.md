@@ -26,6 +26,10 @@ fuck that. As I said I'm lazy.
 
 Works just like you would expect from the web interface!
 
+**NOTE**: if your location has more than one word in it (ie, San Francisco, Palo Alto, Potrero Hill),
+make sure to surround it with quotes.
+
+
 ##Who
 You, and me baby.
 
