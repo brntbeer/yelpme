@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Yelpme::VERSION
   s.authors     = ["brntbeer"]
   s.email       = ["brent.beer@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "http://rubygems.org/gems/yelpme"
   s.summary     = %q{Yelpme is an interface to using Yelp's API.}
   s.description = %q{Yelpme is used to utilize Yelp's API from the command line using the already existing yelp2 gem.}
 
