@@ -1,5 +1,11 @@
 #Yelpme so I don't have to.
 
+##WHOOPS
+So this gem is a work in progress, clearly. That being said, the maintainer of the yelp2 gem has not
+released to rubygems.org and so my require statement is basically going to fail for you.
+
+So if you're really anxious and dont want to wait for him, clone the yelp2 repo and run `rake install` and:
+:star: :star: star: You'll be good to go. :star: :star: :star:
 
 ##What
 Yelpme uses the [yelp2](https://github.com/rdeshpande/yelp2) Ruby wrapper by [rdeshpande](https://github.com/rdeshpande)
@@ -10,7 +16,15 @@ I'm lazy and often can't decide what to eat for lunch, dinner, breakfast,
 bars, etc. Or I don't know what kind of pizza I want, but I know where.
 
 Yes, I know I know.. I could go to Yelp's site and type this in, but
-fuck that. As I said I'm lazy
+fuck that. As I said I'm lazy.
+
+##How
+    $ yelpme breakfast "san francisco"
+    #=> etc etc
+    $ yelpme plow "potrero hill"
+    #=> all info for Plow
+
+Works just like you would expect from the web interface!
 
 ##Who
 You, and me baby.
