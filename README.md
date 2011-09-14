@@ -12,6 +12,19 @@ Yes, I know I know.. I could go to Yelp's site and type this in, but
 fuck that. As I said I'm lazy.
 
 ##How
+__IMPORTANT__ You should probably sign in/up for yelp.com and go to [the api](http://www.yelp.com/developers/getting_started/api_access)
+and request some api-hotness. After doing so, mosey your way over to your .bash_profile/rc/whichever and enter the
+following:
+    
+    export YELP_CONSUMER_KEY='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    export YELP_CONSUMER_SECRET='xxxxxxxxxxxxxxxxxxxxxxxxxx'
+    export YELP_TOKEN='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    export YELP_TOKEN_SECRET='xxxxxxxxxxxxxxxxxxxxxxxxx'
+
+Obviously put in your read consumer key, consumer secret, token, and token secret in place of those Xs.
+
+Cool. Good job, I'm proud of you for doing that. Now we can run:
+
     $ yelpme breakfast "san francisco"
     #=> etc etc
     $ yelpme plow "potrero hill"
