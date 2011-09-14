@@ -32,8 +32,12 @@ module Yelpme
         exit
       end
     end
-    query = Yelp::Base.new(ENV["YELP_CONSUMER_KEY"],ENV["YELP_CONSUMER_SECRET"],ENV["YELP_TOKEN"], ENV["YELP_TOKEN_SECRET"])
     raise ArgumentError, "Location needs a value" if location[:location].nil?
-    pp query.search(term, location)[0]
+    if %w{YELP_CONSUMER_KEY YELP_CONSUMER_SECRET YELP_TOKEN YELP_TOKEN_SECRET}.all?{|word| ENV.include?(word)}
+      query = Yelp::Base.new(ENV["YELP_CONSUMER_KEY"],ENV["YELP_CONSUMER_SECRET"],ENV["YELP_TOKEN"], ENV["YELP_TOKEN_SECRET"])
+      pp query.search(term, location)[0]
+    else
+      raise LoadError, "Verify that your ENV variables for authentication to Yelp are set. View the README for more information."
+    end
   end
 end
