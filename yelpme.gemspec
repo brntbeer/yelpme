@@ -19,6 +19,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency('yelp2', '>= 0.0.3')
-  s.add_dependency("slop")
 
 end
