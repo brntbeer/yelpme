@@ -5,7 +5,7 @@ begin
 rescue LoadError
 end
 require "yelp2"
-
+require "pp"
 
 module Yelpme
   
@@ -24,6 +24,6 @@ module Yelpme
     location = {}
     location[:location] = args.shift
     query = Yelp::Base.new(ENV["YELP_CONSUMER_KEY"],ENV["YELP_CONSUMER_SECRET"],ENV["YELP_TOKEN"], ENV["YELP_TOKEN_SECRET"])
-    puts query.search(term, location)[0].inspect
+    pp query.search(term, location)[0]
   end
 end
