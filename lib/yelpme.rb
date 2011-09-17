@@ -53,7 +53,7 @@ module Yelpme
   # options    - Options passed in from OptionParser.
   #
   # Returns one or many businesses.
-  def parse_businesses(businesses, options)
+  def self.parse_businesses(businesses, options)
     options[:random].nil? ?  businesses.first : businesses[rand(businesses.size)]
   end
 end
