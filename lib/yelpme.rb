@@ -26,14 +26,19 @@ module Yelpme
     location = {}
     location[:location] = args.shift
     options = {}
-    OptionParser.new do |opts|
+    opts = OptionParser.new do |opts|
+
       opts.on("-r", "--random", "Random result") do |r|
         options[:random] = r
       end
+
       opts.on("-V", "--version", "Print the version") do |v|
-        options[:version] = v
+        puts "Version #{Yelpme::VERSION}"
+        exit
       end
     end.parse!
+
+    
 
     raise ArgumentError, "Location needs a value" if location[:location].nil?
     if %w{YELP_CONSUMER_KEY YELP_CONSUMER_SECRET YELP_TOKEN YELP_TOKEN_SECRET}.all?{|word| ENV.include?(word)}
