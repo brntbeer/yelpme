@@ -1,7 +1,7 @@
 #Yelpme so I don't have to.
 
 ##What
-Yelpme uses the [yelp2](https://github.com/rdeshpande/yelp2) Ruby wrapper by [rdeshpande](https://github.com/rdeshpande)
+Yelpme uses the [yelp2](https://github.com/mikepilat/yelp2) Ruby wrapper by [mikepilat](https://github.com/mikepilat)
 to be used on the command line.
 
 ##Why
