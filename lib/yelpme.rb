@@ -31,6 +31,10 @@ module Yelpme
         options[:random] = r
       end
 
+      opts.on("-F", "--full_output", "Full output") do |f|
+        options[:full_output] = f
+      end
+
       opts.on("-V", "--version", "Print the version") do |v|
         puts "Version #{Yelpme::VERSION}"
         exit
@@ -44,7 +48,7 @@ module Yelpme
       query = Yelp::Base.new(ENV["YELP_CONSUMER_KEY"],ENV["YELP_CONSUMER_SECRET"],ENV["YELP_TOKEN"], ENV["YELP_TOKEN_SECRET"])
       businesses = query.search(term, location)
       business = parse_businesses(businesses, options)
-      output(business)
+      output(business, options)
     else
       raise LoadError, "Verify that your ENV variables for authentication to Yelp are set. View the README for more information."
     end
@@ -65,15 +69,22 @@ module Yelpme
   # Spits out the output of the text given.
   #
   # business - Text passed in that needs to be output
+  # options  - Options to decide on what to give for output.
   #
   # Returns output!
-  def self.output(business)
-    text = %{
-          Name:     #{business.name}
-          Rating:   #{business.hash["rating"]}
-          Address:  #{business.location.hash["address"]}
-          Url:      #{business.url}
-            }.gsub(/^ {8}/, '')
-    puts text
+  def self.output(business, options)
+
+    text = unless options[:full_output] 
+             %{
+             Name:     #{business.name}
+             Rating:   #{business.hash["rating"]}
+             Address:  #{business.location.hash["address"]}
+             Url:      #{business.url}
+             }.gsub(/^ {8}/, '')
+           else
+             business
+           end
+
+    options[:full_output] ? (pp text) : (puts text)
   end
 end
