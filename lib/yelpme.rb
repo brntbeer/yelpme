@@ -1,6 +1,5 @@
 require "yelpme/version"
 
-
 begin
   require 'rubygems'
 rescue LoadError
@@ -45,7 +44,7 @@ module Yelpme
       query = Yelp::Base.new(ENV["YELP_CONSUMER_KEY"],ENV["YELP_CONSUMER_SECRET"],ENV["YELP_TOKEN"], ENV["YELP_TOKEN_SECRET"])
       businesses = query.search(term, location)
       business = parse_businesses(businesses, options)
-      pp business
+      output(business)
     else
       raise LoadError, "Verify that your ENV variables for authentication to Yelp are set. View the README for more information."
     end
@@ -60,5 +59,21 @@ module Yelpme
   # Returns one or many businesses.
   def self.parse_businesses(businesses, options)
     options[:random].nil? ?  businesses.first : businesses[rand(businesses.size)]
+  end
+
+
+  # Spits out the output of the text given.
+  #
+  # business - Text passed in that needs to be output
+  #
+  # Returns output!
+  def self.output(business)
+    text = %{
+          Name:     #{business.name}
+          Rating:   #{business.hash["rating"]}
+          Address:  #{business.location.hash["address"]}
+          Url:      #{business.url}
+            }.gsub(/^ {8}/, '')
+    puts text
   end
 end
