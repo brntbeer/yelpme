@@ -1,4 +1,5 @@
 require "yelpme/version"
+require "pry"
 
 begin
   require 'rubygems'
@@ -46,7 +47,7 @@ module Yelpme
     raise ArgumentError, "Location needs a value" if location[:location].nil?
     if %w{YELP_CONSUMER_KEY YELP_CONSUMER_SECRET YELP_TOKEN YELP_TOKEN_SECRET}.all?{|word| ENV.include?(word)}
       query = Yelp::Base.new(ENV["YELP_CONSUMER_KEY"],ENV["YELP_CONSUMER_SECRET"],ENV["YELP_TOKEN"], ENV["YELP_TOKEN_SECRET"])
-      businesses = query.search(term, location)
+      businesses = query.search_with_location(term, location[:location])
       business = parse_businesses(businesses, options)
       output(business, options)
     else
@@ -66,6 +67,9 @@ module Yelpme
   end
 
 
+  def self.nearby(lat, long)
+  end
+
   # Spits out the output of the text given.
   #
   # business - Text passed in that needs to be output
@@ -77,8 +81,8 @@ module Yelpme
     text = unless options[:full_output] 
              %{
              Name:     #{business.name}
-             Rating:   #{business.hash["rating"]}
-             Address:  #{business.location.hash["address"]}
+             Rating:   #{business.rating}
+             Address:  #{business.location.display_address}
              Url:      #{business.url}
              }.gsub(/^ {8}/, '')
            else
@@ -87,4 +91,5 @@ module Yelpme
 
     options[:full_output] ? (pp text) : (puts text)
   end
+
 end
