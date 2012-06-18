@@ -84,6 +84,8 @@ module Yelpme
              Rating:   #{business.rating}
              Address:  #{business.location.display_address}
              Url:      #{business.url}
+
+             Phone:    #{business.phone}
              }.gsub(/^ {8}/, '')
            else
              business
