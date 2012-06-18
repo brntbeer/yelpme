@@ -24,7 +24,7 @@ module Yelpme
   def self.search(*args)
     term = args.shift
     location = {}
-    location[:location] = args.shift
+    location[:location] = args.join(" ")
     options = {}
     opts = OptionParser.new do |opts|
 
