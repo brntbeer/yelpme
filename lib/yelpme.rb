@@ -24,7 +24,7 @@ module Yelpme
   def self.search(*args)
     term = args.shift
     location = {}
-    location[:location] = args.join(" ")
+    location[:location] = args.reject{|a| a.include?("-")}
     options = {}
     opts = OptionParser.new do |opts|
 
@@ -41,8 +41,6 @@ module Yelpme
         exit
       end
     end.parse!
-
-    
 
     raise ArgumentError, "Location needs a value" if location[:location].nil?
     if %w{YELP_CONSUMER_KEY YELP_CONSUMER_SECRET YELP_TOKEN YELP_TOKEN_SECRET}.all?{|word| ENV.include?(word)}
