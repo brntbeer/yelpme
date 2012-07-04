@@ -80,10 +80,11 @@ module Yelpme
              %{
              Name:     #{business.name}
              Rating:   #{business.rating}
-             Address:  #{business.location.display_address.join(", ")}
+             Address:  #{business.location.display_address.join(", ").
+                         gsub(/(.{1,60})(?: +|$\n?)|(.{1,60})/,"\\1\\2\n"+("\s"*23)).strip.chomp}
              Url:      #{business.url}
 
-             Phone:    #{business.phone}
+             Phone:    \e[33m#{defined?(business.phone) ? business.phone : "No Number Posted"}\e[0m
              }.gsub(/^ {8}/, '')
            else
              business
