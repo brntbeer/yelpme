@@ -80,7 +80,7 @@ module Yelpme
              %{
              Name:     #{business.name}
              Rating:   #{business.rating}
-             Address:  #{business.location.display_address}
+             Address:  #{business.location.display_address.join(", ")}
              Url:      #{business.url}
 
              Phone:    #{business.phone}
