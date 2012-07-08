@@ -84,7 +84,7 @@ module Yelpme
                          gsub(/(.{1,60})(?: +|$\n?)|(.{1,60})/,"\\1\\2\n"+("\s"*23)).strip.chomp}
              Url:      #{business.url}
 
-             Phone:    \e[33m#{defined?(business.phone) ? business.phone : "No Number Posted"}\e[0m
+             Phone:    \e[33m#{business.phone rescue "No Number Posted"}\e[0m
              }.gsub(/^ {8}/, '')
            else
              business
