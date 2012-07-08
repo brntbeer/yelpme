@@ -76,7 +76,8 @@ module Yelpme
   # Returns output!
   def self.output(business, options)
 
-    text = unless options[:full_output] 
+    begin
+      text = unless options[:full_output] 
              %{
              Name:     #{business.name}
              Rating:   #{business.rating}
@@ -86,9 +87,12 @@ module Yelpme
 
              Phone:    \e[33m#{business.phone rescue "No Number Posted"}\e[0m
              }.gsub(/^ {8}/, '')
-           else
-             business
-           end
+             else
+               business
+             end
+    rescue
+      text = "No business found.\nPlease ensure your business or search terms are typed correctly."
+    end
 
     options[:full_output] ? (pp text) : (puts text)
   end
